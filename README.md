@@ -71,6 +71,12 @@ SmartParking Pro is a cutting-edge, mobile-first solution designed to revolution
 
 ## 📱 Application Screens
 
+<p align="center">
+  <img src="docs/home.png" width="45%" alt="Smart Parking Home Dashboard" />
+  &nbsp; &nbsp;
+  <img src="docs/slots.png" width="45%" alt="Smart Parking Slot Selection" />
+</p>
+
 - **Splash Screen**: Engaging entrance with smooth animations.
 - **Onboarding**: Introduction to the smart parking ecosystem.
 - **Auth System**: Secure Login & Signup flows.

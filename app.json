@@ -38,6 +38,7 @@
     "plugins": [],
 
     "experiments": {
+      "baseUrl": "/SmartParkingPro",
       "typedRoutes": true,
       "reactCompiler": true
     }
