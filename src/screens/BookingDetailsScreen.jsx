@@ -11,7 +11,14 @@ import {
   Platform,
   ScrollView,
 } from "react-native";
-import MapView, { Marker } from "react-native-maps";
+
+
+let MapView, Marker;
+if (Platform.OS !== "web") {
+  const Maps = require("react-native-maps");
+  MapView = Maps.default;
+  Marker = Maps.Marker;
+}
 
 export default function BookingDetailsScreen({ route, navigation }) {
   const params = route?.params || {};
@@ -139,18 +146,25 @@ export default function BookingDetailsScreen({ route, navigation }) {
           <Text style={styles.title}>Booking Details</Text>
 
           <View style={styles.mapBox}>
-            <MapView
-              pointerEvents="none"
-              style={StyleSheet.absoluteFill}
-              initialRegion={{
-                latitude: parkingLocation.latitude,
-                longitude: parkingLocation.longitude,
-                latitudeDelta: 0.01,
-                longitudeDelta: 0.01,
-              }}
-            >
-              <Marker coordinate={parkingLocation} title={area} />
-            </MapView>
+            {Platform.OS !== "web" && MapView ? (
+              <MapView
+                pointerEvents="none"
+                style={StyleSheet.absoluteFill}
+                initialRegion={{
+                  latitude: parkingLocation.latitude,
+                  longitude: parkingLocation.longitude,
+                  latitudeDelta: 0.01,
+                  longitudeDelta: 0.01,
+                }}
+              >
+                <Marker coordinate={parkingLocation} title={area} />
+              </MapView>
+            ) : (
+              <View style={[StyleSheet.absoluteFill, { backgroundColor: "#1F2937", justifyContent: "center", alignItems: "center" }]}>
+                <Text style={{ color: "#9CA3AF", fontSize: 16, fontWeight: "700" }}>🗺️ Map Preview</Text>
+                <Text style={{ color: "#6B7280", fontSize: 12, marginTop: 4 }}>Available on mobile app</Text>
+              </View>
+            )}
 
             <View style={styles.mapOverlay}>
               <Text style={styles.mapText}>📍 {distanceText}</Text>

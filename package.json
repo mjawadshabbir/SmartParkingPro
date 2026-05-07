@@ -1,6 +1,7 @@
 {
   "name": "smartparkingpro",
   "version": "1.0.0",
+  "homepage": "https://mjawadshabbir.github.io/SmartParkingPro/",
   "scripts": {
     "start": "expo start",
     "reset-project": "node ./scripts/reset-project.js",
